@@ -11,6 +11,10 @@ export const Button = styled.button`
   border: none;
   cursor: pointer;
   margin-top: 0.5rem;
+  :disabled {
+    filter: grayscale(50%);
+    cursor: not-allowed;
+  }
   @media (max-width: 376px) {
     margin: auto;
     width: 50%;

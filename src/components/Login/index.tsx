@@ -9,10 +9,28 @@ import { ApplicationState } from 'store'
 import * as UserActions from 'store/ducks/user/actions'
 
 import { bindActionCreators, Dispatch } from 'redux'
+import React from 'react'
+import { User, UserState } from 'store/ducks/user/types'
 
-const Login = () => {
+type StateProps = {
+  user: UserState
+}
+
+type DispatchProps = {
+  loginRequest(user: User): void
+}
+
+type Props = StateProps & DispatchProps
+
+const Login = ({ loginRequest, user }: Props) => {
   const email = useForm('email')
   const password = useForm('password')
+
+  async function handleSubmit(e: React.SyntheticEvent) {
+    e.preventDefault()
+
+    await loginRequest({ userName: email.value, password: password.value })
+  }
 
   return (
     <S.Wrapper>
@@ -23,7 +41,7 @@ const Login = () => {
           bem-vindo!
         </S.Title>
         <S.Sub>Para acessar a plataforma, faça seu login.</S.Sub>
-        <S.Form>
+        <S.Form onSubmit={handleSubmit}>
           <S.FieldsContainer>
             <Input type="text" label="E-MAIL" name="email" {...email} />
             <Input
@@ -33,7 +51,11 @@ const Login = () => {
               {...password}
             />
           </S.FieldsContainer>
-          <Button value="ENTRAR" />
+          {user.loading ? (
+            <Button disabled value="ENTRANDO..." />
+          ) : (
+            <Button value="ENTRAR" />
+          )}
           <S.LostPass>
             Esqueceu seu login ou senha? Clique <a>aqui</a>
           </S.LostPass>
@@ -44,7 +66,7 @@ const Login = () => {
 }
 
 const mapStateToProps = (state: ApplicationState) => ({
-  user: state.user.data
+  user: state.user
 })
 
 const mapDispatchToProps = (dispatch: Dispatch) =>

@@ -39,6 +39,7 @@ export const Input = styled.input`
 
 export const Clear = styled.img`
   margin-right: 1rem;
+  cursor: pointer;
 `
 
 export const Error = styled.label`

@@ -10,7 +10,7 @@ export interface User {
 }
 
 export interface UserState {
-  readonly data: User
+  readonly user: User
   readonly loading: boolean
   readonly error: boolean
 }

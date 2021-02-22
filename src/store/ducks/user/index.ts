@@ -6,7 +6,7 @@ const emptyUser = { userName: '', password: '' }
 const INITIAL_STATE: UserState = {
   error: false,
   loading: false,
-  data: emptyUser
+  user: emptyUser
 }
 
 const reducer: Reducer<UserState> = (state = INITIAL_STATE, action) => {
@@ -14,9 +14,9 @@ const reducer: Reducer<UserState> = (state = INITIAL_STATE, action) => {
     case UserTypes.LOGIN_REQUEST:
       return { ...state, loading: true }
     case UserTypes.LOGIN_SUCCESS:
-      return { ...state, loading: false, error: false, data: action.payload }
+      return { ...state, loading: false, error: false, user: action.payload }
     case UserTypes.LOGIN_FAIL:
-      return { ...state, loading: false, error: true, data: emptyUser }
+      return { ...state, loading: false, error: true, user: emptyUser }
     default:
       return state
   }

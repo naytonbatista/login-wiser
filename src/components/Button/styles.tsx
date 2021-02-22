@@ -13,7 +13,6 @@ export const Button = styled.button`
   margin-top: 0.5rem;
   @media (max-width: 376px) {
     margin: auto;
-    margin-top: 1.5rem;
     width: 50%;
     box-shadow: none;
   }

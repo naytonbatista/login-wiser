@@ -3,7 +3,14 @@ import Input from 'components/Input'
 import useForm from 'hooks/useForm'
 import * as S from './styles'
 
-export default function Login() {
+import { connect } from 'react-redux'
+import { ApplicationState } from 'store'
+
+import * as UserActions from 'store/ducks/user/actions'
+
+import { bindActionCreators, Dispatch } from 'redux'
+
+const Login = () => {
   const email = useForm('email')
   const password = useForm('password')
 
@@ -35,3 +42,11 @@ export default function Login() {
     </S.Wrapper>
   )
 }
+
+const mapStateToProps = (state: ApplicationState) => ({
+  user: state.user.data
+})
+
+const mapDispatchToProps = (dispatch: Dispatch) =>
+  bindActionCreators(UserActions, dispatch)
+export default connect(mapStateToProps, mapDispatchToProps)(Login)

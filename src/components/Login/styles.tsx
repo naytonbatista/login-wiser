@@ -52,6 +52,9 @@ export const Form = styled.form`
     max-width: none;
     padding-left: 1.75rem;
     padding-right: 1.75rem;
+    & > button {
+      margin-top: 1.5rem;
+    }
   }
 `
 export const FieldsContainer = styled.div`

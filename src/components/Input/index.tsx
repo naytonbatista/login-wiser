@@ -11,7 +11,7 @@ export type InputProps = {
 const Input = ({ label, setValue, error = '', ...props }: InputProps) => {
   return (
     <S.Wrapper>
-      <S.Label>{label}</S.Label>
+      <S.Label htmlFor={props.name}>{label}</S.Label>
       <S.InputWrapper error={error}>
         <S.Input {...props} />
         {error && <S.Clear src="./img/x.png" onClick={() => setValue('')} />}

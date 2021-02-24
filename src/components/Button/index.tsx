@@ -6,7 +6,11 @@ export type ButtonProps = {
 } & ButtonHTMLAttributes<HTMLButtonElement>
 
 const Button = ({ value, ...props }: ButtonProps) => {
-  return <S.Button {...props}>{value}</S.Button>
+  return (
+    <S.Button {...props} type="button">
+      {value}
+    </S.Button>
+  )
 }
 
 export default Button

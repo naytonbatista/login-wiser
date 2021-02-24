@@ -1,16 +1,16 @@
-import Button from 'components/Button'
-import Input from 'components/Input'
-import useForm from 'hooks/useForm'
+import Button from '../Button'
+import Input from '../Input'
+import useForm from '../../hooks/useForm'
 import * as S from './styles'
 
 import { connect } from 'react-redux'
-import { ApplicationState } from 'store'
+import { ApplicationState } from '../../store'
 
-import * as UserActions from 'store/ducks/user/actions'
+import * as UserActions from '../../store/ducks/user/actions'
 
 import { bindActionCreators, Dispatch } from 'redux'
 import React from 'react'
-import { User, UserState } from 'store/ducks/user/types'
+import { User, UserState } from '../../store/ducks/user/types'
 
 type StateProps = {
   user: UserState
